@@ -14,7 +14,7 @@ Installation
 Clonez le dépôt GitHub dans votre répertoire de travail local :
 (bash)
 git clone https://github.com/ChedlyBenKedim/Todo.git
-cd Todo/todo-app
+
 
 2. Installer les Dépendances
 Assurez-vous que Composer est installé, puis installez les dépendances du projet :
@@ -22,40 +22,13 @@ Assurez-vous que Composer est installé, puis installez les dépendances du proj
 composer install
 
 3. Configurer les Variables d'Environnement
-Ouvrez le fichier .env et configurez les paramètres de connexion à la base de données :
-(fichier.env)
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=todo_app
-DB_USERNAME=root
-DB_PASSWORD=
-
-4. Générer la Clé d'Application
-Générez la clé d'application Laravel :
-(bach)
-php artisan key:generate
-
-5. Migrer la Base de Données
-creer manuellement une base de donneés vide avec le nom todo_app (en utilisatant phpmyadmin)  
-
-Exécutez les migrations pour créer les tables nécessaires dans la base de données :
+Copiez le fichier .env.example en .env :
 (bash)
-php artisan migrate
+copy .env.example .env
 
-6. Démarrer le Serveur de Développement
-(bash)
+4.  Note===> J'ai utilisé Mailtrap pour les notifications par e-mail concernant les tâches. Vous devrez donc modifier les paramètres SMTP dans le fichier '.env' avec votre 'MAIL_USERNAME', 'MAIL_PASSWORD' et 'MAIL_FROM_ADDRESS' (vous devez faire une inscription ,si vous n'avez pas de compte mailtrap).
 
-php artisan serve
-
-7. Accédez à l'application à l'adresse http://127.0.0.1:8000/login
-
-8. Inscrivez-vous d'abord, s'il vous plaît.
-
-
-Note===> J'ai utilisé Mailtrap pour les notifications par e-mail concernant les tâches. Vous devrez donc modifier les paramètres SMTP dans le fichier '.env' avec votre 'MAIL_USERNAME', 'MAIL_PASSWORD' et 'MAIL_FROM_ADDRESS'.
-
-(fichier courante contient)
+(mon exemple)
 MAIL_MAILER=smtp
 MAIL_HOST=sandbox.smtp.mailtrap.io
 MAIL_PORT=2525
@@ -65,6 +38,27 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=chedlyinfo@gmail.com
 MAIL_FROM_NAME="${todo-app}"
 
+5. Générer la Clé d'Application
+Générez la clé d'application Laravel :
+(bach)
+php artisan key:generate
+
+
+6. Migrer la Base de Données
+creer manuellement une base de donneés vide avec le nom todo_app (si vous n'avez pas modifier DB_DATABASE=todo_app )en utilisatant phpmyadmin 
+
+Exécutez les migrations pour créer les tables nécessaires dans la base de données :
+(bash)
+php artisan migrate
+
+7. Démarrer le Serveur de Développement
+(bash)
+
+php artisan serve
+
+8. Accédez à l'application à l'adresse http://127.0.0.1:8000/login
+
+9. Inscrivez-vous d'abord, s'il vous plaît.
 
 
 Note==> Concernant Docker, j'ai bien fourni les fichiers nécessaires. (Si vous souhaitez tester avec Docker  )
