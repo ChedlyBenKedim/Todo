@@ -1,64 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Todo Application
+Description
+Cette application Todo vous permet de gérer vos tâches avec des fonctionnalités telles que la création, la mise à jour, la suppression et la visualisation des tâches. Elle inclut également un système de statistiques pour suivre vos progrès.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Prérequis
+.PHP 7.4 ou version supérieure
+.Composer - Gestionnaire de dépendances PHP
+.WAMP Server ou XAMPP (si vous utilisez une alternative)
+.MySQL 5.7 ou version supérieure
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Installation
+1. Cloner le Dépôt
+Clonez le dépôt GitHub dans votre répertoire de travail local :
+(bash)
+git clone https://github.com/ChedlyBenKedim/Todo.git
+cd Todo/todo-app
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. Installer les Dépendances
+Assurez-vous que Composer est installé, puis installez les dépendances du projet :
+(bash)
+composer install
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Configurer les Variables d'Environnement
+Ouvrez le fichier .env et configurez les paramètres de connexion à la base de données :
+(fichier.env)
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=todo_app
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Learning Laravel
+4. Générer la Clé d'Application
+Générez la clé d'application Laravel :
+(bach)
+php artisan key:generate
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. Migrer la Base de Données
+creer manuellement une base de donneés vide avec le nom todo_app (en utilisatant phpmyadmin)  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Exécutez les migrations pour créer les tables nécessaires dans la base de données :
+(bash)
+php artisan migrate
 
-## Laravel Sponsors
+6. Démarrer le Serveur de Développement
+(bash)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+php artisan serve
 
-### Premium Partners
+7. Accédez à l'application à l'adresse http://127.0.0.1:8000/login
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+8. Inscrivez-vous d'abord, s'il vous plaît.
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Note===> J'ai utilisé Mailtrap pour les notifications par e-mail concernant les tâches. Vous devrez donc modifier les paramètres SMTP dans le fichier '.env' avec votre 'MAIL_USERNAME', 'MAIL_PASSWORD' et 'MAIL_FROM_ADDRESS'.
 
-## Code of Conduct
+(fichier courante contient)
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=a3202af26bbdbb
+MAIL_PASSWORD=2248dceb61945d
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=chedlyinfo@gmail.com
+MAIL_FROM_NAME="${todo-app}"
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Note==> Concernant Docker, j'ai bien fourni les fichiers nécessaires. (Si vous souhaitez tester avec Docker  )
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Contact
+Pour toute question ou suggestion, vous pouvez me contacter à chedlyinfo@gmail.com
