@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('QUEUE_CONNECTION', 'sync'),
+    'default' => env('QUEUE_CONNECTION', 'rabbitmq'),
 
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ return [
     | is used by your application. A default configuration has been added
     | for each back-end shipped with Laravel. You are free to add more.
     |
-    | Drivers: "sync", "database", "beanstalkd", "sqs", "redis", "null"
+    | Drivers: "sync", "database", "beanstalkd", "sqs", "redis", "rabbitmq", "null"
     |
     */
 
@@ -68,6 +68,30 @@ return [
             'queue' => env('REDIS_QUEUE', 'default'),
             'retry_after' => 90,
             'block_for' => null,
+            'after_commit' => false,
+        ],
+
+        'rabbitmq' => [
+            'driver' => 'rabbitmq',
+            'queue' => env('RABBITMQ_QUEUE', 'default'),
+            'connection' => PhpAmqpLib\Connection\AMQPLazyConnection::class,
+            'hosts' => [
+                [
+                    'host' => env('RABBITMQ_HOST', '127.0.0.1'),
+                    'port' => env('RABBITMQ_PORT', 5672),
+                    'user' => env('RABBITMQ_USER', 'guest'),
+                    'password' => env('RABBITMQ_PASSWORD', 'guest'),
+                ],
+            ],
+            'options' => [
+                'ssl_options' => [
+                    'cafile' => env('RABBITMQ_SSL_CAFILE', null),
+                    'local_cert' => env('RABBITMQ_SSL_LOCALCERT', null),
+                    'local_key' => env('RABBITMQ_SSL_LOCALKEY', null),
+                    'verify_peer' => env('RABBITMQ_SSL_VERIFY_PEER', true),
+                ],
+            ],
+            'retry_after' => 90,
             'after_commit' => false,
         ],
 
